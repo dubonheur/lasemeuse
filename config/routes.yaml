@@ -1,0 +1,18 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+
+api_upload:
+    path: /api/upload
+    controller: App\Controller\UploadController::uploadAction
+    methods: [POST]
+
+
+
+verifier_nouveaux_enregistrements:
+    path: /verifier_nouveaux_enregistrements
+    controller: App\Controller\VerificationController::verifierNouveauxEnregistrements

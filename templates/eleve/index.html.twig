@@ -1,0 +1,103 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+		<style>
+		.btn-custom {
+    background-color:#9933cc;
+    border-color: #fff;
+	color: #fff;
+}
+
+	</style>
+
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+		<div class="container-fluid p-0">
+
+			<h1 class="h3 mb-3"><strong>Listes </strong> des Elèves</h1>
+		
+			<div class="row">
+		
+				<div class="card">
+					<div class="card-body">
+		
+					<a href="{{ path('ajouter_eleve') }}" ><img src="{{ asset('assets/img/icons/ajouter.png') }}"></a></br></br>
+		
+						<table class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Prénom</th>
+									<th>Sexe</th>
+									<th>Date de naissance</th>
+									<th>Parent</th>
+									<th>Photo</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+		
+		
+							<tbody>
+								{% for eleve in eleves %}
+								<tr>
+									<td>{{ eleve.nom }}</td>	
+									<td>{{ eleve.prenom }}</td>
+									<td>{{ eleve.sexe }}</td>
+									<td>{{ eleve.datenaissance }}</td>
+									<td>{{ eleve.parent.nom }} {{ eleve.parent.prenom }}</td>
+									<td class="py-10">
+									<img class="picSender" style="cursor: pointer; width:70px" src="{{ asset('assets/Uploaded/' ~ eleve.photo ) }}" data-toggle="modal" data-target="#exampleModalTooltip" data-toggle="tooltip" data-placement="right" title="See the picture" alt="photo Image">
+								    </td>
+									<td>
+										<a href="{{ path('eleve_show', {'id': eleve.id}) }}"><img src="{{ asset('assets/img/icons/voir.png') }}"></a>
+										<a href="{{ path('eleve_modifier', {'id': eleve.id}) }}" class="btn btn-purple"><img src="{{asset('assets/img/icons/modifier.png')}}"></a>
+										<a href="{{ path('eleve_supprimer', {'id': eleve.id}) }}" class="btn btn-purple"><img src="{{asset('assets/img/icons/supprimer.png')}}"></a>
+
+									</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+		
+					</div>
+				</div>
+			</div>
+		
+		</div>
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

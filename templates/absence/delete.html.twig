@@ -1,0 +1,16 @@
+{% extends 'manu/base.html.twig' %}
+
+{% block title %}Supprimer une absence{% endblock %}
+
+{% block body %}
+    <h1>Supprimer une absence</h1>
+    <p>Voulez-vous vraiment supprimer cette absence ?</p>
+    <p>{{ absence }}</p>
+
+    <form action="{{ path('absence_supprimer    ²²²²                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ²', { 'id': absence.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ absence.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

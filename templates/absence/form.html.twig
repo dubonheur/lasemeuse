@@ -1,0 +1,33 @@
+{{ form_start(absenceForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+<div class="form-group">
+  {{ form_label(absenceForm.dateab, 'Date d\'absence', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+  <div class="col-sm-10">
+    {{ form_widget(absenceForm.dateab, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(absenceForm.dateab) }}
+  </div>
+</div>
+
+<div class="form-group">
+  {{ form_label(absenceForm.motif, 'Motif', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+  <div class="col-sm-10">
+    {{ form_widget(absenceForm.motif, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(absenceForm.motif) }}
+  </div>
+</div>
+
+<div class="form-group">
+  {{ form_label(absenceForm.numInsc, 'Numéro d\'inscription', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+  <div class="col-sm-10">
+    {{ form_widget(absenceForm.numInsc, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(absenceForm.numInsc) }}
+  </div>
+</div></br>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-primary" style="background-color: #9933cc" 'width: 2em'>{{ button_label|default('Ajouter') }}</button>
+  </div>
+</div>
+
+{{ form_end(absenceForm) }}

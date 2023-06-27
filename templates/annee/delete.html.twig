@@ -1,0 +1,14 @@
+
+
+{% block body %}
+    <h1>Supprimer une annee</h1>
+    <p>Voulez-vous vraiment supprimer cette année ?</p>
+    <p>{{ annee }}</p>
+
+    <form action="{{ path('annee_supprimer', { 'id': annee.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ annee.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

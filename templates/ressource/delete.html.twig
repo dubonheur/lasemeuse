@@ -1,0 +1,16 @@
+{% extends 'manu/base.html.twig' %}
+
+{% block title %}Supprimer un ressource{% endblock %}
+
+{% block body %}
+    <h1>Supprimer un ressource</h1>
+    <p>Voulez-vous vraiment supprimer cette ressource ?</p>
+    <p>{{ ressource }}</p>
+
+    <form action="{{ path('ressource_supprimer', { 'id': ressource.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ressource.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

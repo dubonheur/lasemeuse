@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+.btn-custom {
+    background-color:#9933cc;
+    border-color: #fff;
+	color: #fff;
+}
+
+</style>
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+		<div class="container-fluid p-0">
+
+			<h1 class="h3 mb-3"><strong>Garder </strong> </h1>
+		
+			<div class="row">
+		
+				<div class="card">
+					<div class="card-body">
+						
+						<a href="{{ path('garder_add') }}"><img src="{{ asset('assets/img/icons/ajouter.png') }}"></a></br></br>
+			
+                        {% block body %}
+                    
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Enseignant</th>
+                                    <th>Année</th>
+                                    <th>Classe</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for garde in gardes %}
+                                    <tr>
+                                        <td>{{ garde.id }}</td>
+                                        <td>{{ garde.enseignant.nom }} {{ garde.enseignant.prenom }}</td>
+                                        <td>{{ garde.annee.debutan|date('d/m/Y') }} - {{ garde.annee.finan|date('d/m/Y') }}</td>
+                                        <td>{{ garde.classe.nomclasse }}</td>
+                                        <td>
+                                            <a href="{{ path('garder_edit', {'id': garde.id}) }}" ><img src="{{ asset('assets/img/icons/modifier.png') }}"></a>
+                                            <a href="{{ path('garder_supprimer', {'id': garde.id}) }}"  onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette garde ?')"><img src="{{ asset('assets/img/icons/supprimer.png') }}"></a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Aucune garde trouvée.</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    
+                    {% endblock %}
+			
+						
+					</div>
+				</div>
+			</div>
+		
+		</div>
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

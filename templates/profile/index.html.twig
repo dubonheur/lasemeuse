@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+		<div class="container-fluid p-0">
+
+		
+			<div class="row">
+		
+				<div class="card">
+					<div class="card-body">
+
+						
+            <main id="main" class="main">
+
+              <div class="pagetitle">
+                <h1>Profile</h1>
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item" style="color: #9933cc"><a style="color: #9933cc" href="{{path('app_menu')}}">Maison</a></li>
+                    <li class="breadcrumb-item active">Utilisateur</li>
+                    <li class="breadcrumb-item active" >Profile</li>
+                  </ol>
+                </nav>
+              </div><!-- End Page Title -->
+          
+              <section class="section profile">
+                <div class="row">
+                  <div class="col-xl-4">
+          
+                    <div class="card">
+                      <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                        <img  class="picSender" style="cursor: pointer; width:150px" src="{{ asset('assets/Uploaded/' ~  app.user.photo ) }}" data-toggle="modal" data-target="#exampleModalTooltip" data-toggle="tooltip" data-placement="right" title="See the picture" alt="Profile" class="rounded-circle"></br>
+                        <h2>{{ app.user.nom }} {{ app.user.prenom }}</h2></br>
+                        <h3>{{ app.user.profession }}</h3>
+                       
+                      </div>
+                    </div>
+          
+                  </div>
+          
+                  <div class="col-xl-8">
+          
+                    <div class="card">
+                      <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+          
+                          <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview" style="color: #9933cc">Aperçu</button>
+                          </li>
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" style="color: #9933cc">Editer Profile</button>
+                          </li>
+          
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" style="color: #9933cc">Changer mot de passe</button>
+                          </li>
+          
+                        </ul>
+                        <div class="tab-content pt-2">
+          
+                          <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                          
+                            <h5 class="card-title">Profile Details</h5>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label ">Nom</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.nom }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Prenom</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.prenom }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Profession</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.profession }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Nationalité</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.nationalite }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Sexe</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.sexe }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Téléphone</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.telephone }}</div>
+                            </div></br>
+          
+                            <div class="row">
+                              <div class="col-lg-3 col-md-4 label">Email</div>
+                              <div class="col-lg-9 col-md-8">{{ app.user.email }}</div>
+                            </div></br>
+          
+                          </div>
+          
+                          <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+          
+                            <!-- Profile Edit Form --> 
+                            <form action="{{path('profile-edit',{'id':app.user.id})}}" enctype="multipart/form-data" method="post">
+
+                                <div class="row mb-3">
+                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Photo de profile</label>
+                                    <div class="col-md-8 col-lg-9">
+                                      {% if app.user.photo %}
+                                        <img class="picSender" style="cursor: pointer; width:70px" src="{{ asset('assets/Uploaded/' ~ app.user.photo) }}" alt="Profile">
+                                      {% else %}
+                                        <img src="{{ asset('path/to/default-profile-image.jpg') }}" alt="Profile">
+                                      {% endif %}
+                                      <div class="pt-2">
+                                        <input type="file" name="profileImage" accept="image/*" class="form-control-file" id="profileImage">
+                                      </div>
+                                    </div>
+                                  </div>
+          
+                              <div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nom</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="nom" type="text" class="form-control" id="fullName" value="{{ app.user.nom }}">
+                                </div>
+                              </div>
+          
+          
+                              <div class="row mb-3">
+                                <label for="company" class="col-md-4 col-lg-3 col-form-label">Prenom</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="prenom" type="text" class="form-control" id="company" value="{{ app.user.prenom }}">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Job" class="col-md-4 col-lg-3 col-form-label">Profession</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="profession" type="text" class="form-control" id="Job" value="{{ app.user.profession }}">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Country" class="col-md-4 col-lg-3 col-form-label">Nationalité</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="nationalite" type="text" class="form-control" id="Country" value="{{ app.user.nationalite }}">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Sexe</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="sexe" type="text" class="form-control" id="Address" value="{{ app.user.sexe }}">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Téléphone</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="telephone" type="text" class="form-control" id="Phone" value="{{ app.user.telephone }}">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="email" type="email" class="form-control" id="Email" value="{{ app.user.email }}">
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <input type="submit" name="submit" class="btn btn-primary" style="background-color: #9933cc">
+                              </div>
+                            </form><!-- End Profile Edit Form -->
+          
+                          </div>
+          
+          
+                          <div class="tab-pane fade pt-3" id="profile-change-password">
+                            <!-- Change Password Form -->
+                            <form  action="{{path('profile-change-password')}}" method="post">
+          
+                              <div class="row mb-3">
+                                       {% include 'email/flash.html.twig' %}
+                                <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mot de passe actuel</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="password" type="password" class="form-control" id="currentPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Nouveau mot de passe</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-entrer nouveau mot de passe</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <input type="submit" name="submit" class="btn btn-primary" style="background-color: #9933cc">
+                              </div>
+                            </form><!-- End Change Password Form -->
+          
+                          </div>
+          
+                        </div><!-- End Bordered Tabs -->
+          
+                      </div>
+                    </div>
+          
+                  </div>
+                </div>
+              </section>
+          
+            </main><!-- End #main -->
+
+
+						
+		
+					</div>
+				</div>
+			</div>
+		
+		</div>
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

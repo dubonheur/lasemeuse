@@ -1,0 +1,128 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<style>
+		.btn-custom {
+    background-color:#9933cc;
+    border-color: #fff;
+	color: #fff;
+}
+
+.link-title {
+    color: #9933cc;
+}
+
+	</style>
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+
+		<div class="container-fluid p-0">
+
+			<h1 class="h3 mb-3"><strong>Elément envoyé</strong></h1></br>
+
+
+
+			<div class="offcanvas-body">
+				<div class="row">
+					<div class="col-md-6">
+						<a href="{{ path('message_index') }}" class="list-group-item list-group-item-action active" style="background-color: #9933cc; color: #ffffffff; font-weight: bold;">Accueil</a>
+					</div>
+					<div class="col-md-6 text-end">
+						<div style="color: #000000;">
+						<p>Vous avez envoyés : {{ nbMessagesEnvoyes }} messages </p>	
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+		
+				<div class="card">
+					<div class="card-body">
+		
+						<section class="container">
+							<div class="row">
+
+								
+
+								<table>
+									<thead>
+										<tr>
+											<th>ADMINISTRATEUR</th>
+											<th>TITRE</th>
+											<th>DATE</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% if messages is not empty %}
+											{% for message in messages %}
+												{% set bold = "" %}
+												{% if message.isRead == 0 %}
+													{% set bold = "fw-bold" %}
+												{% endif %}
+												<tr>
+													<td class="col-3 {{ bold }}">{{ message.administrateur.nom }} {{ message.administrateur.prenom }}</td>
+													<td class="col-3 {{ bold }}"><a href="{{ path('read', { 'id': message.id }) }}" class="link-title">{{ message.titre }}</a></td>
+													<td class="col-3 {{ bold }}">{{ message.dateenv|date }}</td>
+													<td class="col-3 {{ bold }}">
+														<a href="{{ path('message_supprimer', { 'id': message.id }) }}" class="btn btn-purple">
+															<img src="{{ asset('assets/img/icons/supprimer.png') }}">
+														</a>
+													</td>
+												</tr>
+											{% endfor %}
+										{% else %}
+											<tr>
+												<td colspan="4">Aucun message trouvé.</td>
+											</tr>
+										{% endif %}
+									</tbody>
+								</table>
+							</div>
+						</section>
+
+					</div>
+				</div>
+		
+			</div>
+		
+		</div>
+
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{% extends 'manu/base.html.twig' %}
+
+{% block title %}Supprimer un rendez-vous{% endblock %}
+
+{% block body %}
+    <h1>Supprimer un rendezvous</h1>
+    <p>Voulez-vous vraiment supprimer cette rendezvous ?</p>
+    <p>{{ rendezvous }}</p>
+
+    <form action="{{ path('rendezvous_supprimer', { 'id': rendezvous.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rendezvous.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

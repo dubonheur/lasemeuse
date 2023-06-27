@@ -1,0 +1,12 @@
+{% block body %}
+    <h1>Supprimer une message</h1>
+    <p>Voulez-vous vraiment supprimer cette message ?</p>
+    <p>{{ message }}</p>
+
+    <form action="{{ path('message_supprimer', { 'id': message.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

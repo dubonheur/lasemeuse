@@ -1,0 +1,146 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta http-equiv="x-ua-compatible" content="ie=edge" />
+      <title>La semeuse_connexion</title>
+    
+      <link href="{{asset('assetts/img/logo1.png')}}" rel="icon">
+      <!-- MDB icon -->
+      <link rel="icon" href="{{asset('assetts/img/mdb-favicon.ico" type="image/x-icon')}}" />
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+      <!-- Google Fonts Roboto -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+      <!-- MDB -->
+      <link rel="stylesheet" href="{{asset('assetts/css/bootstrap-login-form.min.css')}}" />
+      <!-- ... Icone vue password ... -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-... votre clé de hachage ..." crossorigin="anonymous" />
+    </head>
+    
+      <!-- Start your project here-->
+    
+      <style>
+        .divider:after,
+        .divider:before {
+          content: "";
+          flex: 1;  
+          height: 1px;
+          background: #eee;
+        }
+        .h-custom {
+          height: calc(100% - 73px);
+        }
+        @media (max-width: 450px) {
+          .h-custom {
+            height: 100%;
+          }
+        }
+        .bg-purple {
+      background-color: #9933cc;
+      color: #fff;
+    }
+    
+    
+    
+      </style>
+    </head>
+    
+    <body>
+    
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                  <img src="{{asset('assetts/img/Connection.png')}}" class="img-fluid"
+                    alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    
+                  <form method="POST" action="{{ path('app_login') }}">
+                  
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+            
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+            
+
+
+                    <h1 class="h3 mb-3 font-weight-normal">Connectez-vous</h1>
+        
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="email" class="form-control form-control-lg border-purple"
+                        placeholder="Entrer email" name="email" value="{{ last_username }}" required autofocus />
+                      <label class="form-label" for="email">Email </label>
+                    </div>
+        
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                             <input type="password" id="password" class="form-control form-control-lg border-purple"
+                                    placeholder="{{ 'Mot de passe' }}" name="password" required />
+                              <label class="form-label" for="password">Mot de passe</label>
+                          <div class="position-absolute top-50 end-0 translate-middle-y password-toggle-icon" onclick="togglePasswordVisibility()">
+                               <i class="fas fa-eye"></i>
+                           </div>
+                    </div>
+
+                             <input type="hidden" name="_csrf_token"
+                                    value="{{ csrf_token('authenticate') }}"
+                                 >
+        
+                    <div class="d-flex justify-content-between align-items-center">
+                    
+                      <div class="form-check mb-0">               
+                      </div>
+                      <a href="{{ path('forgotten_password') }}" class="text-body">Mot de passe oublie?</a>
+                    </div>
+        
+                    <div class="text-center text-lg-start mt-0 pt-2">
+                      <button type="submit" class=" bg-purple"
+                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Connexion</button>
+                    </div>
+        
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-purple">
+              <div class="text-white mb-3 mb-md-0">
+                <marquee>Complexe scolaire la semeuse</marquee>
+              </div>
+            
+            </div>
+          </section>
+    
+    <!-- Icone vue password-->
+    <script>
+      function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var passwordToggleIcon = document.querySelector(".password-toggle-icon");
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordToggleIcon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+            passwordInput.type = "password";
+            passwordToggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+    </script>
+    
+      <!-- MDB -->
+      <script type="text/javascript" src="{{asset('assetts/js/mdb.min.js')}}"></script>
+      <!-- Custom scripts -->
+      <script type="text/javascript"></script>
+    </body>
+    
+    </html>

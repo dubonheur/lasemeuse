@@ -1,0 +1,17 @@
+{{ form_start(classeForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+<div class="form-group">
+  {{ form_label(classeForm.nomclasse, 'Nom de classe', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+  <div class="col-sm-10">
+    {{ form_widget(classeForm.nomclasse, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(classeForm.nomclasse) }}
+  </div>
+</div></br>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button type="submit" class="btn btn-primary" style="background-color: #9933cc" 'width: 2em'>{{ button_label|default('Ajouter') }}</button>
+  </div>
+</div>
+
+{{ form_end(classeForm) }}

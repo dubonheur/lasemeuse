@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+		<div class="container-fluid p-0">
+
+			<h1 class="h3 mb-3"><strong>Détail </strong> de l'emploie</h1>
+		
+			<div class="row">
+		
+                <table class="table table-hover tpedable-stri" >
+                    <tr>
+                        <td>ID:</td>
+                        <td>{{ emploie.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Classe:</td>
+                        <td>{{ emploie.classe.nomClasse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Année scolaire:</td>
+                        <td>{{ emploie.annee.debutan |date("m/d/Y")}}/{{ emploie.annee.finan|date("m/d/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <td>Période:</td>
+                        <td>{{ emploie.periode.libelle }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date du jour:</td>
+                        <td>{{ emploie.datejour|date("m/d/Y") }}</td>
+                    </tr>
+                    <tr>
+                        <td>Heure début:</td>
+                        <td>{{ emploie.heuredebut|date("H:i") }}</td>
+                    </tr>
+                    <tr>
+                        <td>Heure fin:</td>
+                        <td>{{ emploie.heureFin|date("H:i")}}</td> 
+                    </tr>
+                    <tr>
+                        <td>Informations:</td>
+                        <td>{{ emploie.info }}</td> 
+                    </tr>
+                    <!-- et ainsi de suite pour les autres champs -->
+                </table>
+
+                <button style="padding: 4px 8px; border-radius: 5px; margin-right: 10px; font-size: 16px; margin-bottom: 2%; margin-top: -2%; background-color: #9933cc;">
+                    <a href="{{ path('emploie_index') }}" style="text-decoration: none; color: #ffffff;">retour à la liste</a>
+                  </button>
+		
+		  
+			</div>
+		
+		</div>
+		
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

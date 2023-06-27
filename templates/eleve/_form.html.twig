@@ -1,0 +1,57 @@
+{{ form_start(eleveForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+  <div class="form-group">
+    {{ form_label(eleveForm.nom, 'Nom', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.nom, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.nom) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(eleveForm.prenom, 'Prénom', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.prenom, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.prenom) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(eleveForm.sexe, 'Sexe', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.sexe, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.sexe) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(eleveForm.datenaissance, 'Date de naissance', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.datenaissance, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.datenaissance) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(eleveForm.parent, 'Parent', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.parent, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.parent) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(eleveForm.photo, 'Photo', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(eleveForm.photo, {'attr': {'class': 'form-control'}}) }}
+      {{ form_errors(eleveForm.photo) }}
+    </div>
+  </div></br>  
+
+  <div class="form-group">
+    <div class="">
+      <button type="submit" class="btn btn-primary" style="background-color: #9933cc" 'width: 2em'>{{ button_label|default('Ajouter') }}</button>
+    </div>
+  </div>
+
+{{ form_end(eleveForm) }}

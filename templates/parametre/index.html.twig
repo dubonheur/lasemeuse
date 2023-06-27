@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+
+	<link rel="preconnect" href="{{asset('assets/https://fonts.gstatic.com')}} ">
+	<link rel="shortcut icon" href="{{asset('assets/ img/icons/icon-48x48.png')}}" />
+
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+	<title>Complexe scolaire la semeuse</title>
+
+	<link href="{{asset('assets/css/app.css')}} " rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<div class="wrapper">
+    {% include "menu/nav_footer/nav.html.twig" %}
+
+
+    <main class="content">
+        
+		<div class="container-fluid p-0">
+
+			<h1 class="h3 mb-3"><strong>Modifier </strong>Mot de passe</h1>
+		
+			<div class="row">
+		
+                  	
+            <main id="main" class="main">
+
+              <div class="pagetitle">
+                <nav>
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"  style="color: #9933cc"><a  style="color: #9933cc" href="{{path('app_menu')}}">Maison</a></li>
+                    <li class="breadcrumb-item">Utilisateur</li>
+                  </ol>
+                </nav>
+              </div><!-- End Page Title -->
+          
+              <section class="section profile">
+                <div class="row">
+                  <div class="col-xl-4">
+          
+                    <div class="card">
+                      <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                        <img  class="picSender" style="cursor: pointer; width:150px" src="{{ asset('assets/Uploaded/' ~  app.user.photo ) }}" data-toggle="modal" data-target="#exampleModalTooltip" data-toggle="tooltip" data-placement="right" title="See the picture" alt="Profile" class="rounded-circle"></br>
+                        <h2>{{ app.user.nom }} {{ app.user.prenom }}</h2>
+                        <h3>{{ app.user.profession }}</h3>
+                       
+                      </div>
+                    </div>
+          
+                  </div>
+          
+                  <div class="col-xl-8">
+          
+                    <div class="card">
+                      <div class="card-body pt-3">
+                        <!-- Bordered Tabs -->
+                        <ul class="nav nav-tabs nav-tabs-bordered">
+          
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password" style="color: #9933cc">Changer mot de passe</button>
+                          </li>
+
+                          <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings" style="color: #9933cc">Compte</button>
+                          </li>
+          
+                        </ul>
+                        <div class="tab-content pt-2">
+
+
+
+                          <div class="tab-pane fade pt-3" id="profile-settings">
+          
+                            <!-- Settings Form -->
+                            <form action="{{path('delete_account')}}" method="post">
+          
+                              <div class="delete-account">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Supprimer mon compte</button>
+                              </div>
+                              
+                              <!-- Modal de confirmation de suppression -->
+                              <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation de suppression du compte</h5>
+                                      <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                      <a href="{{path('delete_account')}}" class="btn btn-danger">Supprimer mon compte</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </form><!-- End settings Form -->
+          
+                          </div>
+          
+        
+          
+          
+                          <div class="tab-pane fade pt-3" id="profile-change-password">
+                            <!-- Change Password Form -->
+                            <form action="{{path('parametre-change-password')}}" method="post">
+          
+                              <div class="row mb-3">
+                                       {% include 'email/flash.html.twig' %}
+                                <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Mot de passe actuel</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="password" type="password" class="form-control" id="currentPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Nouveau mot de passe</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                </div>
+                              </div>
+          
+                              <div class="row mb-3">
+                                <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-entrer nouveau mot de passe</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                </div>
+                              </div>
+          
+                              <div class="text-center">
+                                <input type="submit" name="submit" class="btn btn-primary" style="background-color: #9933cc">
+                              </div>
+                            </form><!-- End Change Password Form -->
+          
+                          </div>
+          
+                        </div><!-- End Bordered Tabs -->
+          
+                      </div>
+                    </div>
+          
+                  </div>
+                </div>
+              </section>
+          
+            </main><!-- End #main -->
+
+		
+			</div>
+		
+		</div>
+        
+    </main>
+			{% include "menu/nav_footer/footer.html.twig" %}
+
+		</div>
+	</div>
+
+	<script src="{{asset('assets/js/app.js')}} "></script>
+
+</body>
+
+</html>

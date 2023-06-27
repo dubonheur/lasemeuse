@@ -1,0 +1,16 @@
+{% extends 'manu/base.html.twig' %}
+
+{% block title %}Supprimer une emploie{% endblock %}
+
+{% block body %}
+    <h1>Supprimer un emploie</h1>
+    <p>Voulez-vous vraiment supprimer cette emploie ?</p>
+    <p>{{ emploie }}</p>
+
+    <form action="{{ path('emploie_supprimer', { 'id': emploie.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ emploie.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

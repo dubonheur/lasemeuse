@@ -1,0 +1,7 @@
+{{ form_start(form) }} 
+{{ form_row(form.titre) }} 
+{{ form_row(form.contenu) }}</br>
+{{ form_row(form.parent) }}</br>
+{{ form_row(form.enseignant) }}</br>
+<button type="submit" class="btn btn-primary" style="background-color: #9933cc" 'width: 2em'>{{ button_label|default('Envoyer')}}</button>
+{{ form_end(form) }}

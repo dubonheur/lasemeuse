@@ -1,0 +1,14 @@
+
+
+{% block body %}
+    <h1>Supprimer la periode</h1>
+    <p>Voulez-vous vraiment supprimer cette periode  ?</p>
+    <p>{{ periode }}</p>
+
+    <form action="{{ path('periode_delete', { 'id': periode.id }) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ periode.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+    </form>
+
+{% endblock %}

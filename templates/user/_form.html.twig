@@ -1,0 +1,112 @@
+{{ form_start(userForm, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+<div class="form-group">
+    {{ form_label(userForm.roles, 'Roles', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.roles, {'attr': {'class': 'form-control', 'style': 'width: 35%'}}) }}
+      {{ form_errors(userForm.roles) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.email, 'Email', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.email, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.email) }}
+    </div>
+  </div>
+
+ 
+
+  <div class="form-group">
+    {{ form_label(userForm.nom, 'Nom', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.nom, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.nom) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.prenom, 'Prénom', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.prenom, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.prenom) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.telephone, 'Téléphone', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.telephone, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.telephone) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.sexe, 'Sexe', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.sexe, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.sexe) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.nationalite, 'Nationalité', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.nationalite, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.nationalite) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.profession, 'Profession', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+      {{ form_widget(userForm.profession, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+      {{ form_errors(userForm.profession) }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    {{ form_label(userForm.photo, 'Photo', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+        {{ form_widget(userForm.photo, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+        {{ form_errors(userForm.photo) }}
+    </div>
+</div>
+  
+
+  <div class="form-group">
+    {{ form_label(userForm.password, 'Mot de passe', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <div class="col-sm-10">
+        {{ form_widget(userForm.password, {'attr': {'class': 'form-control', 'style': 'width: 60%'}}) }}
+        {{ form_errors(userForm.password) }}
+    </div>
+ </div></br>
+
+      <div class="form-group">
+        <div class="">
+          <button type="submit" class="btn btn-primary" style="background-color: #9933cc" 'width: 2em'>{{ button_label|default('Ajouter') }}</button>
+        </div>
+      </div>
+
+      <script>
+          function togglePasswordVisibility(input) {
+          var passwordInput = input;
+          var passwordToggleIcon = input.nextElementSibling;
+        
+         if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordToggleIcon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+          } else {
+            passwordInput.type = 'password';
+            passwordToggleIcon.innerHTML = '<i class="fas fa-eye"></i>';
+         }
+        }
+      </script>
+
+    
+    {{ form_end(userForm) }}
+
+
+
